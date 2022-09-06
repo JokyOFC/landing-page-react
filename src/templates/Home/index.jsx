@@ -1,4 +1,5 @@
-import "./App.css";
+/* eslint-disable prettier/prettier */
+import './App.css';
 
 function Home() {
   return (
