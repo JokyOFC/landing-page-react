@@ -1,11 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { ThemeProvider } from 'styled-components';
+
+import { GlobalStyles } from './styles/global-styles';
+import { theme } from './styles/theme';
 import Home from './templates/Home';
+
+import styled, { css } from 'styled-components';
+
+export const Container = styled.div`
+  background: red;
+
+  ${({ theme }) => css`
+    color: ${theme.colors.white};
+  `}
+`;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Home />
+    <ThemeProvider theme={theme}>
+      <Home />
+      <GlobalStyles />
+    </ThemeProvider>
   </React.StrictMode>,
 );
 
