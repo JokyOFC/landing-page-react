@@ -1,7 +1,12 @@
+import * as Styled from './styles';
+import { Heading } from '../../components/Heading';
+
 function Home() {
   return (
     <div className="App">
-      <h1>Hello</h1>
+      <Styled.Wrapper>
+        <Heading>O Texto que eu quero</Heading>
+      </Styled.Wrapper>
     </div>
   );
 }
