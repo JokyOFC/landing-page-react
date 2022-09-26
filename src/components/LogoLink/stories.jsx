@@ -20,9 +20,9 @@ export const ImageOnly = (args) => {
 
 export const TextOnly = (args) => {
   return (
-    <a>
+    <div>
       <LogoLink {...args} />
-    </a>
+    </div>
   );
 };
 

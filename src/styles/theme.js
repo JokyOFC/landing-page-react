@@ -1,8 +1,10 @@
+/* eslint-disable prettier/prettier */
 export const theme = {
   colors: {
     primaryColor: '#0A1128',
     secondaryColor: '#dc143c',
     white: '#FFFFFF',
+    mediumGray: '#e9e9e9',
   },
   fonts: {
     family: {

@@ -4,8 +4,8 @@ import * as Styled from './styles';
 
 export const LogoLink = ({ text = 'LogoLink', srcImg = '', link }) => {
   return (
-    <Heading>
-      <Styled.Container>
+    <Heading size="small" uppercase>
+      <Styled.Container href={link}>
         {!!srcImg && <img src={srcImg} alt={text} />}
         {!srcImg && text}
       </Styled.Container>
