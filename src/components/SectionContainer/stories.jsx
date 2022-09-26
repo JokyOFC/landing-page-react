@@ -2,11 +2,14 @@ import { SectionContainer } from '.';
 
 export default {
   title: 'SectionContainer',
+
   component: SectionContainer,
+
   args: {
     children: (
       <div>
         <h1>SectionContainer</h1>
+
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores illo
           rerum tenetur delectus incidunt nulla blanditiis consequatur quisquam
@@ -16,6 +19,7 @@ export default {
       </div>
     ),
   },
+
   argTypes: {
     children: { type: '' },
   },

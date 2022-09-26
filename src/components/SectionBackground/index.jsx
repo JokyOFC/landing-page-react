@@ -1,5 +1,7 @@
 import P from 'prop-types';
+
 import * as Styled from './styles';
+
 import { SectionContainer } from '../SectionContainer';
 
 export const SectionBackground = ({ children, background = false }) => {
@@ -12,5 +14,6 @@ export const SectionBackground = ({ children, background = false }) => {
 
 SectionBackground.propTypes = {
   children: P.node.isRequired,
+
   background: P.bool,
 };
