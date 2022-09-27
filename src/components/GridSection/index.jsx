@@ -7,20 +7,21 @@ import * as Styled from './styles';
 export const GridSection = ({
   title,
   description,
-  grid,
-  background = false,
+  text_grid,
+  metadata,
+  sectionId,
 }) => {
   return (
-    <SectionBackground background={background}>
+    <SectionBackground background={metadata.background} sectionId={sectionId}>
       <Styled.Container>
-        <Heading size="huge" uppercase colorDark={!background} as="h2">
+        <Heading size="huge" uppercase colorDark={!metadata.background} as="h2">
           {title}
         </Heading>
         <TextComponent>{description}</TextComponent>
         <Styled.Grid>
-          {grid.map((el) => (
+          {text_grid.map((el) => (
             <Styled.GridElement key={el.title}>
-              <Heading size="medium" colorDark={!background} as="h3">
+              <Heading size="medium" colorDark={!metadata.background} as="h3">
                 {el.title}
               </Heading>
               <TextComponent>{el.description}</TextComponent>
@@ -35,11 +36,16 @@ export const GridSection = ({
 GridSection.propTypes = {
   title: P.string.isRequired,
   description: P.string.isRequired,
-  grid: P.arrayOf(
+  text_grid: P.arrayOf(
     P.shape({
       title: P.string.isRequired,
       description: P.string.isRequired,
     }),
   ).isRequired,
-  background: P.bool,
+  metadata: P.objectOf(
+    P.shape({
+      background: P.bool,
+    }),
+  ),
+  sectionId: P.string,
 };

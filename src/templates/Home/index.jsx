@@ -25,7 +25,9 @@ function Home() {
         const json = await dataF.json();
         const { attributes } = json.data[0];
         const pageData = mapData([attributes]);
-
+        console.log(pageData[0]);
+        console.log(`json: `);
+        console.log(json);
         setData(() => pageData[0]);
       } catch (err) {
         setData(undefined);
@@ -53,6 +55,8 @@ function Home() {
 
   const { text, link, srcImg, links } = menu;
 
+  console.log(data);
+
   return (
     <Base
       links={links}
@@ -60,25 +64,41 @@ function Home() {
       logoData={{ text, link, srcImg }}
     >
       {sections.map((section, index) => {
-        const { component } = section;
-        console.log(component);
+        const { component, __component } = section;
         const key = `${slug}-${index}`;
+        // console.log(section);
 
-        if (component === 'section.section-two-columns') {
-          // eslint-disable-next-line react/jsx-key
+        if (
+          __component === 'section.section-two-columns' ||
+          component === 'section.section-two-columns'
+        ) {
+          //console.log({ ...section });
           return <GridTwoColumn key={key} {...section} />;
         }
 
-        if (component === 'section.section-content') {
-          // eslint-disable-next-line react/jsx-key
-          return <GridContent key={key} {...section} />;
-        }
-
-        if (component === 'section.section-grid-text') {
+        if (
+          __component === 'section.section-grid' ||
+          component === 'section.section-grid'
+        ) {
+          console.log({ ...section });
           return <GridSection key={key} {...section} />;
         }
 
-        if (component === 'section.section-grid-image') {
+        if (
+          __component === 'section.section-grid-text' ||
+          component === 'section.section-grid-text'
+        ) {
+          //console.log({ ...section });
+          return <GridContent key={key} {...section} />;
+        }
+        // console.log({ ...section });
+        // console.log({ __component });
+        if (
+          __component === 'section.section-grid-image' ||
+          component === 'section.section-grid-image'
+        ) {
+          //console.log({ ...section });
+
           return <GridImage key={key} {...section} />;
         }
       })}
