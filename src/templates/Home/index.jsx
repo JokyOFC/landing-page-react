@@ -11,23 +11,27 @@ import { GridContent } from '../../components/GridContent';
 import { GridSection } from '../../components/GridSection';
 import { GridImage } from '../../components/GridImage';
 
+import { useLocation } from 'react-router-dom';
+
 function Home() {
   const [data, setData] = useState([]);
+  const location = useLocation();
   const isMounted = useRef(true);
 
   useEffect(() => {
+    const pathname = location.pathname.replace(/[^a-z0-9-_]/gi, '');
+    const slug = pathname ? pathname : 'landing-page';
+    console.log(slug);
+
     const load = async () => {
       console.log('fetching');
       try {
         const dataF = await fetch(
-          'http://localhost:1337/api/pages?filters[slug]=landing-page&populate=deep',
+          `https://strapi-test-landing.herokuapp.com/api/pages?filters[slug]=${slug}&populate=deep`,
         );
         const json = await dataF.json();
         const { attributes } = json.data[0];
         const pageData = mapData([attributes]);
-        console.log(pageData[0]);
-        console.log(`json: `);
-        console.log(json);
         setData(() => pageData[0]);
       } catch (err) {
         setData(undefined);
