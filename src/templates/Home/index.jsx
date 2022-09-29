@@ -20,6 +20,7 @@ function Home() {
 
   useEffect(() => {
     const pathname = location.pathname.replace(/[^a-z0-9-_]/gi, '');
+    console.log(location.pathname);
     const slug = pathname ? pathname : 'landing-page';
     console.log(slug);
 
@@ -45,7 +46,7 @@ function Home() {
     return () => {
       isMounted.current = false;
     };
-  }, []);
+  }, [location.pathname]);
 
   if (data === undefined) {
     return <PageNotFound />;
