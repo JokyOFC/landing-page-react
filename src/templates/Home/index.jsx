@@ -20,15 +20,13 @@ function Home() {
 
   useEffect(() => {
     const pathname = location.pathname.replace(/[^a-z0-9-_]/gi, '');
-    console.log(location.pathname);
     const slug = pathname ? pathname : 'landing-page';
-    console.log(slug);
 
     const load = async () => {
       console.log('fetching');
       try {
         const dataF = await fetch(
-          `https://strapi-test-landing.herokuapp.com/api/pages?filters[slug]=${slug}&populate=deep`,
+          `https://strapi-test-landing2.herokuapp.com/api/pages?filters[slug]=${slug}&populate=deep`,
         );
         const json = await dataF.json();
         const { attributes } = json.data[0];
